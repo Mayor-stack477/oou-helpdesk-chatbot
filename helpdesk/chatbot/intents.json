@@ -1,0 +1,256 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["hi", "hello", "hey", "good morning", "good afternoon", "good evening", "hey there", "what's up", "howdy", "greetings"],
+      "responses": [
+        "Hello! How can I help you with your university needs today?",
+        "Hi there! Welcome to the University Help Desk. What can I assist you with?",
+        "Greetings! I'm here to help with admissions, fees, courses, and more. What do you need?",
+        "Hey! How can I make your university experience better today?",
+        "Welcome! Feel free to ask me anything about our university."
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["bye", "goodbye", "see you later", "talk to you later", "have a nice day", "take care", "bye bye"],
+      "responses": [
+        "Goodbye! Have a great day on campus! 🎓",
+        "See you later! Feel free to come back if you have more questions.",
+        "Take care! Remember, I'm here 24/7 if you need help.",
+        "Bye! Best of luck with your studies! 📚",
+        "Have a wonderful day! Don't hesitate to return if you need assistance."
+      ]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["thank you", "thanks", "appreciate it", "thank you so much", "thanks a lot", "much appreciated"],
+      "responses": [
+        "You're welcome! Happy to help! 😊",
+        "Anytime! That's what I'm here for.",
+        "Glad I could assist! Have a great day!",
+        "My pleasure! Feel free to ask if you need anything else.",
+        "You're welcome! Is there anything else I can help with?"
+      ]
+    },
+    {
+      "tag": "fees",
+      "patterns": [
+        "how to pay fees",
+        "tuition payment",
+        "pay school fees",
+        "fee payment options",
+        "how can i pay my fees",
+        "paying for courses",
+        "school fees payment",
+        "payment methods",
+        "pay tuition",
+        "fee payment deadline",
+        "where to pay fees",
+        "online payment",
+        "how to pay",
+        "pay my fees"
+      ],
+      "responses": [
+        "You can pay via the school portal at https://portal.university.edu/payments. Accepted methods include credit card, bank transfer, and installment plans.",
+        "Payments are accepted through the student portal. You can use credit/debit cards, bank transfers, or set up a payment plan.",
+        "The school portal offers multiple payment options: online banking, credit card, or in-person at the finance office.",
+        "You have several payment options: 1) Online via student portal, 2) Bank transfer, 3) Installment payment plan, or 4) In-person at the cashier's office.",
+        "Tuition payments can be made through the student portal. The deadline for Spring semester is January 15th.",
+        "Visit the finance office in Building A, Room 101, Monday-Friday 9am-4pm for in-person payments.",
+        "You can pay via the school portal. Would you like me to guide you through the process?"
+      ]
+    },
+    {
+      "tag": "admission",
+      "patterns": [
+        "how to apply",
+        "admission requirements",
+        "application process",
+        "how do i get admitted",
+        "join the university",
+        "apply for admission",
+        "application deadline",
+        "admission criteria",
+        "entrance exam",
+        "application form",
+        "undergraduate admission",
+        "graduate admission"
+      ],
+      "responses": [
+        "The admission process involves: 1) Online application, 2) Submit transcripts, 3) Recommendation letters, 4) Entrance exam. Deadline is March 15th for Fall semester.",
+        "To apply for admission, visit our admissions portal, create an account, fill out the application form, and upload required documents.",
+        "Admission requirements include: High school diploma, minimum GPA of 2.5, entrance exam scores, and personal statement.",
+        "You can apply online through the admissions portal. The application fee is $50 and is non-refundable.",
+        "International students must also provide TOEFL/IELTS scores and a copy of their passport.",
+        "Early admission deadline is November 15th. Regular admission deadline is March 15th."
+      ]
+    },
+    {
+      "tag": "library",
+      "patterns": [
+        "library hours",
+        "when is library open",
+        "library schedule",
+        "library timing",
+        "library open today",
+        "library location",
+        "borrow books",
+        "library resources",
+        "study room",
+        "online library"
+      ],
+      "responses": [
+        "The library is open Monday-Friday 8 AM - 10 PM, Saturday 9 AM - 6 PM, and Sunday 1 PM - 8 PM.",
+        "Library hours: Weekdays 8am-10pm, Saturday 9am-6pm, Sunday 1pm-8pm. Extended hours during finals week!",
+        "Our library operates from 8 AM to 10 PM on weekdays, with reduced weekend hours. Check the website for holiday schedules.",
+        "The main library is open 8am-10pm Mon-Fri. The 24/7 study lounge is always accessible with your student ID.",
+        "You can borrow up to 15 books for 3 weeks. Renewals available online through your library account.",
+        "The library has 20 study rooms available for booking. Reserve through the library website up to 7 days in advance."
+      ]
+    },
+    {
+      "tag": "courses",
+      "patterns": [
+        "course registration",
+        "how to register for classes",
+        "enroll in courses",
+        "sign up for classes",
+        "add classes",
+        "drop a course",
+        "course catalog",
+        "class schedule",
+        "semester dates",
+        "add drop period",
+        "prerequisites"
+      ],
+      "responses": [
+        "Course registration opens on April 1st for Fall semester and November 1st for Spring semester. Use the student portal to enroll.",
+        "To register for courses: Log into the portal → Student Center → Enrollment → Add Classes. You'll need your student ID and password.",
+        "Registration priority is based on credit hours completed. Seniors register first, followed by juniors, sophomores, and freshmen.",
+        "You can add/drop courses during the first two weeks of the semester without penalty. After that, a W grade may appear on your transcript.",
+        "The add/drop period is the first 14 days of the semester. Check the academic calendar for exact dates.",
+        "View the full course catalog online. Each course listing shows prerequisites, credits, and instructor information."
+      ]
+    },
+    {
+      "tag": "financial_aid",
+      "patterns": [
+        "scholarships",
+        "financial aid",
+        "student loans",
+        "grants",
+        "tuition assistance",
+        "aid options",
+        "fafsa",
+        "scholarship application",
+        "need based aid",
+        "merit scholarship"
+      ],
+      "responses": [
+        "We offer merit-based scholarships, need-based grants, and federal student loans. Apply through FAFSA by March 1st for priority consideration.",
+        "Financial aid options include: Presidential Scholarship ($10,000/year), Dean's Scholarship ($5,000/year), and need-based grants ($2,000-$8,000/year).",
+        "To apply for financial aid, complete the FAFSA form online and submit scholarship applications by the priority deadline of March 1st.",
+        "Contact the Financial Aid Office at financialaid@university.edu or call (555) 123-4567 for personalized assistance.",
+        "85% of our students receive some form of financial aid. The average award is $7,500 per academic year.",
+        "Work-study programs are available for eligible students. Apply through the financial aid office before April 15th."
+      ]
+    },
+    {
+      "tag": "campus",
+      "patterns": [
+        "campus map",
+        "dining services",
+        "parking",
+        "student housing",
+        "dormitory",
+        "cafeteria",
+        "transportation",
+        "shuttle service",
+        "bookstore",
+        "health center"
+      ],
+      "responses": [
+        "The campus map is available online or at the information desk in the Student Center. The main buildings are all within a 10-minute walk.",
+        "Dining services include the main cafeteria (7am-8pm), Starbucks (8am-6pm), and food court (10am-7pm). Meal plans available.",
+        "Parking permits are $50 per semester. Register your vehicle through the student portal. Visitor parking is available in Lot A.",
+        "Student housing options include traditional dorms, suite-style, and apartments. Apply early - priority deadline is May 1st.",
+        "Free shuttle service runs every 15 minutes between campus, student housing, and the nearby shopping center.",
+        "The campus bookstore is open Mon-Fri 9am-5pm. Buy or rent textbooks, university merchandise, and supplies."
+      ]
+    },
+    {
+      "tag": "contact",
+      "patterns": [
+        "contact info",
+        "phone number",
+        "email address",
+        "office hours",
+        "help desk",
+        "support",
+        "advisor contact",
+        "department phone"
+      ],
+      "responses": [
+        "Main Help Desk: (555) 123-4567 or helpdesk@university.edu. Hours: Mon-Fri 8am-8pm, Sat 10am-4pm.",
+        "Academic Advising: (555) 123-4568 or advising@university.edu. Drop-in hours Mon-Thu 1pm-4pm.",
+        "Registrar's Office: (555) 123-4569 or registrar@university.edu. Open Mon-Fri 9am-5pm.",
+        "Financial Aid Office: (555) 123-4570 or financialaid@university.edu. Virtual appointments available.",
+        "Emergency/Security: (555) 123-4911 (24/7). For non-emergencies, call (555) 123-4566."
+      ]
+    },
+    {
+      "tag": "dates",
+      "patterns": [
+        "academic calendar",
+        "semester dates",
+        "holidays",
+        "exam schedule",
+        "break",
+        "vacation",
+        "spring break",
+        "winter break",
+        "final exams"
+      ],
+      "responses": [
+        "Fall Semester: August 25 - December 15. Spring Semester: January 15 - May 10. Summer Session: May 25 - August 1.",
+        "Important dates: Add/Drop ends September 5. Midterm exams October 10-15. Thanksgiving break November 23-27.",
+        "Spring Break is March 10-17. Final exams are May 5-10. Commencement is May 15.",
+        "View the full academic calendar online at https://university.edu/calendar for exact dates and deadlines.",
+        "Final exam schedules are posted 4 weeks before exams begin. Check your student portal for personalized schedule."
+      ]
+    },
+    {
+      "tag": "technical",
+      "patterns": [
+        "login problem",
+        "password reset",
+        "portal not working",
+        "technical support",
+        "it help",
+        "can't access",
+        "student portal issue",
+        "forgot password"
+      ],
+      "responses": [
+        "IT Support: (555) 123-4580 or itsupport@university.edu. Hours: 24/7 for critical issues.",
+        "To reset your password, go to the portal login page and click 'Forgot Password'. Follow the email instructions.",
+        "If the portal isn't working, try clearing your browser cache, using a different browser, or waiting 10 minutes.",
+        "Common portal issues are often resolved by updating your browser or using Chrome/Firefox. Edge may have compatibility issues.",
+        "Submit a ticket through the IT Help Desk portal. Response time is typically within 2 hours during business hours."
+      ]
+    },
+    {
+      "tag": "fallback",
+      "patterns": [],
+      "responses": [
+        "I'm not sure about that. Let me connect you with a human advisor or you can call the help desk at (555) 123-4567.",
+        "That's outside my current knowledge. Would you like me to connect you with the appropriate department?",
+        "I don't have information on that yet. Please email helpdesk@university.edu for assistance.",
+        "Let me find that information for you. In the meantime, you can check the student portal or visit the admin building.",
+        "I'm still learning! Could you rephrase your question or contact our support team at (555) 123-4567?",
+        "That's a great question! For the most accurate information, please call our main office at (555) 123-4567."
+      ]
+    }
+  ]
+}

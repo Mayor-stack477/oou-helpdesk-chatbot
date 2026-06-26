@@ -1,0 +1,262 @@
+const express = require('express');
+const cors = require('cors');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+require('dotenv').config();
+
+const app = express();
+
+// Middleware
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://127.0.0.1:5500'],
+  credentials: true
+}));
+app.use(express.json());
+
+console.log('✅ CareerBot with Auth Initialized!');
+
+const JWT_SECRET = process.env.JWT_SECRET || 'careerbot_secret_123';
+
+// Simple database (in memory)
+const users = [];
+const conversations = {};
+
+// ==================== AUTH FUNCTIONS ====================
+
+// Signup
+app.post('/api/auth/signup', async (req, res) => {
+  try {
+    const { name, email, password, educationLevel = 'high-school' } = req.body;
+    
+    // Check if user exists
+    if (users.find(u => u.email === email)) {
+      return res.status(400).json({
+        success: false,
+        error: 'User already exists'
+      });
+    }
+    
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+    
+    // Create user
+    const user = {
+      id: Date.now().toString(),
+      name,
+      email,
+      password: hashedPassword,
+      educationLevel,
+      createdAt: new Date()
+    };
+    
+    users.push(user);
+    
+    // Create token
+    const token = jwt.sign(
+      { id: user.id, email: user.email, name: user.name },
+      JWT_SECRET,
+      { expiresIn: '7d' }
+    );
+    
+    res.json({
+      success: true,
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        educationLevel: user.educationLevel
+      }
+    });
+    
+    console.log(`👤 New user: ${email}`);
+    
+  } catch (error) {
+    console.error('Signup error:', error);
+    res.status(500).json({ success: false, error: 'Server error' });
+  }
+});
+
+// Login
+app.post('/api/auth/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    
+    // Find user
+    const user = users.find(u => u.email === email);
+    if (!user) {
+      return res.status(401).json({
+        success: false,
+        error: 'Invalid email or password'
+      });
+    }
+    
+    // Check password
+    const validPassword = await bcrypt.compare(password, user.password);
+    if (!validPassword) {
+      return res.status(401).json({
+        success: false,
+        error: 'Invalid email or password'
+      });
+    }
+    
+    // Create token
+    const token = jwt.sign(
+      { id: user.id, email: user.email, name: user.name },
+      JWT_SECRET,
+      { expiresIn: '7d' }
+    );
+    
+    res.json({
+      success: true,
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        educationLevel: user.educationLevel
+      }
+    });
+    
+    console.log(`🔑 Login: ${email}`);
+    
+  } catch (error) {
+    console.error('Login error:', error);
+    res.status(500).json({ success: false, error: 'Server error' });
+  }
+});
+
+// Check auth middleware
+const checkAuth = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+  
+  if (!token) {
+    return res.status(401).json({
+      success: false,
+      error: 'No token provided'
+    });
+  }
+  
+  try {
+    const user = jwt.verify(token, JWT_SECRET);
+    req.user = user;
+    next();
+  } catch (error) {
+    return res.status(403).json({
+      success: false,
+      error: 'Invalid token'
+    });
+  }
+};
+
+// Get user profile
+app.get('/api/auth/me', checkAuth, (req, res) => {
+  const user = users.find(u => u.id === req.user.id);
+  
+  if (!user) {
+    return res.status(404).json({
+      success: false,
+      error: 'User not found'
+    });
+  }
+  
+  res.json({
+    success: true,
+    user: {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      educationLevel: user.educationLevel
+    }
+  });
+});
+
+// ==================== CHAT ROUTES ====================
+
+app.get('/', (req, res) => {
+  res.json({
+    message: '🔐 CareerBot API with Auth',
+    status: 'OK',
+    users: users.length,
+    endpoints: [
+      'POST /api/auth/signup - Create account',
+      'POST /api/auth/login - Login',
+      'GET /api/auth/me - Get profile',
+      'POST /api/chat/start - Start chat'
+    ]
+  });
+});
+
+// Start chat (works for guests and logged-in users)
+app.post('/api/chat/start', (req, res) => {
+  const sessionId = 'session_' + Date.now();
+  
+  conversations[sessionId] = {
+    messages: [{
+      role: 'bot',
+      content: "Hello! I'm CareerBot. What's your name?",
+      timestamp: new Date()
+    }],
+    step: 0
+  };
+  
+  res.json({
+    success: true,
+    sessionId,
+    message: conversations[sessionId].messages[0]
+  });
+});
+
+// Process message
+app.post('/api/chat/message', (req, res) => {
+  const { sessionId, message, step } = req.body;
+  
+  if (!conversations[sessionId]) {
+    return res.status(404).json({
+      success: false,
+      error: 'Session not found'
+    });
+  }
+  
+  const questions = [
+    "Nice! What subjects do you enjoy?",
+    "Great! What are your skills?",
+    "What are your interests?",
+    "What work environment do you prefer?",
+    "People, data, things, or ideas?"
+  ];
+  
+  if (step >= 5) {
+    res.json({
+      success: true,
+      conversationComplete: true,
+      recommendations: [{
+        name: "Career Suggestions",
+        icon: "🎓",
+        score: 85,
+        courses: ["Computer Science", "Business"],
+        careers: ["Developer", "Manager"],
+        skills: ["Communication", "Problem Solving"]
+      }]
+    });
+  } else {
+    res.json({
+      success: true,
+      nextQuestion: questions[step],
+      nextStep: step + 1
+    });
+  }
+});
+
+// Start server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log('===================================');
+  console.log('🔐 CAREERBOT WITH AUTH v1.0');
+  console.log(`📍 http://localhost:${PORT}`);
+  console.log('✅ JWT Authentication: READY');
+  console.log('✅ User System: READY');
+  console.log('✅ Chat System: READY');
+  console.log('===================================');
+});

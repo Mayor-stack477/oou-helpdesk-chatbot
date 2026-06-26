@@ -1,0 +1,696 @@
+/* =====================================================
+   OOU HELP DESK ADMIN DASHBOARD
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f4f6f9;
+    color:#333;
+}
+
+/* Sidebar */
+
+.sidebar{
+
+    width:260px;
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    height:100vh;
+
+    background:#006400;
+
+    color:#fff;
+
+    overflow-y:auto;
+
+    box-shadow:3px 0 10px rgba(0,0,0,.15);
+
+}
+
+.sidebar-header{
+
+    padding:30px 20px;
+
+    text-align:center;
+
+    border-bottom:1px solid rgba(255,255,255,.15);
+
+}
+
+.sidebar-header h2{
+
+    font-size:24px;
+
+    font-weight:bold;
+
+}
+
+.sidebar-header p{
+
+    margin-top:8px;
+
+    color:#ddd;
+
+    font-size:14px;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+    margin-top:25px;
+
+}
+
+.sidebar ul li{
+
+    margin:8px 0;
+
+}
+
+.sidebar ul li a{
+
+    display:block;
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:15px 25px;
+
+    transition:.3s;
+
+    font-size:16px;
+
+}
+
+.sidebar ul li a:hover{
+
+    background:#0d8c42;
+
+    padding-left:35px;
+
+}
+
+.sidebar ul li a i{
+
+    width:25px;
+
+}
+
+/* Main Content */
+
+.main-content{
+
+    margin-left:260px;
+
+    padding:30px;
+
+}
+
+/* Header */
+
+.topbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:30px;
+
+}
+
+.topbar h2{
+
+    font-size:30px;
+
+    color:#006400;
+
+}
+
+.admin-profile{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.admin-profile img{
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:50%;
+
+}
+
+.admin-profile span{
+
+    font-weight:bold;
+
+}
+
+/* Cards */
+
+.stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+.card{
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.card h5{
+
+    color:#666;
+
+    margin-bottom:10px;
+
+}
+
+.card h2{
+
+    color:#006400;
+
+    font-size:32px;
+
+}
+
+.card i{
+
+    font-size:35px;
+
+    float:right;
+
+    color:#0d8c42;
+
+}
+
+/* ==========================================
+   TABLES
+========================================== */
+
+.table-container{
+
+    margin-top:35px;
+
+    background:#fff;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+
+}
+
+.table-container h3{
+
+    color:#006400;
+
+    margin-bottom:20px;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+table thead{
+
+    background:#006400;
+
+    color:#fff;
+
+}
+
+table th{
+
+    padding:15px;
+
+    text-align:left;
+
+}
+
+table td{
+
+    padding:15px;
+
+    border-bottom:1px solid #eee;
+
+}
+
+table tbody tr{
+
+    transition:.3s;
+
+}
+
+table tbody tr:hover{
+
+    background:#f5f5f5;
+
+}
+
+/* ==========================================
+   RECENT ACTIVITY
+========================================== */
+
+.activity{
+
+    margin-top:35px;
+
+    background:#fff;
+
+    border-radius:15px;
+
+    padding:25px;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+
+}
+
+.activity h3{
+
+    color:#006400;
+
+    margin-bottom:20px;
+
+}
+
+.activity-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:15px 0;
+
+    border-bottom:1px solid #eee;
+
+}
+
+.activity-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.activity-user{
+
+    font-weight:bold;
+
+}
+
+.activity-time{
+
+    color:#888;
+
+    font-size:14px;
+
+}
+
+/* ==========================================
+   BADGES
+========================================== */
+
+.badge-success{
+
+    background:#198754;
+
+    color:white;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+}
+
+.badge-danger{
+
+    background:#dc3545;
+
+    color:white;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+}
+
+.badge-warning{
+
+    background:#ffc107;
+
+    color:#222;
+
+    padding:6px 12px;
+
+    border-radius:20px;
+
+    font-size:13px;
+
+}
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.btn-green{
+
+    background:#006400;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 20px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.btn-green:hover{
+
+    background:#0d8c42;
+
+}
+
+.btn-red{
+
+    background:#dc3545;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 20px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+}
+
+.btn-red:hover{
+
+    background:#bb2d3b;
+
+}
+
+/* ==========================================
+   SEARCH BAR
+========================================== */
+
+.search-box{
+
+    display:flex;
+
+    margin-bottom:20px;
+
+}
+
+.search-box input{
+
+    flex:1;
+
+    padding:12px;
+
+    border:1px solid #ddd;
+
+    border-radius:8px;
+
+    outline:none;
+
+}
+
+.search-box button{
+
+    margin-left:10px;
+
+}
+
+/* ==========================================
+   CHART SECTION
+========================================== */
+
+.chart-container{
+
+    margin-top:35px;
+
+    background:#fff;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+
+}
+
+.chart-container h3{
+
+    color:#006400;
+
+    margin-bottom:20px;
+
+}
+
+.chart-placeholder{
+
+    width:100%;
+
+    height:350px;
+
+    border:2px dashed #ddd;
+
+    border-radius:12px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#999;
+
+    font-size:18px;
+
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.footer{
+
+    margin-top:40px;
+
+    text-align:center;
+
+    color:#777;
+
+    font-size:14px;
+
+    padding:20px;
+
+}
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#f1f1f1;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#006400;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#0d8c42;
+
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+.card,
+.table-container,
+.activity,
+.chart-container{
+
+    animation:fadeIn .5s ease;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================
+   RESPONSIVE DESIGN
+========================================== */
+
+@media(max-width:992px){
+
+    .sidebar{
+
+        width:220px;
+
+    }
+
+    .main-content{
+
+        margin-left:220px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .sidebar{
+
+        position:relative;
+
+        width:100%;
+
+        height:auto;
+
+    }
+
+    .main-content{
+
+        margin-left:0;
+
+        padding:20px;
+
+    }
+
+    .topbar{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:15px;
+
+    }
+
+    .stats{
+
+        grid-template-columns:1fr;
+
+    }
+
+    table{
+
+        display:block;
+
+        overflow-x:auto;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .card h2{
+
+        font-size:24px;
+
+    }
+
+    .topbar h2{
+
+        font-size:22px;
+
+    }
+
+}

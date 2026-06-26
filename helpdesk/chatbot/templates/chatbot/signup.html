@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OOU Help Desk - Sign Up</title>
+
+    <style>
+
+        body{
+            margin:0;
+            padding:0;
+            font-family:Arial, sans-serif;
+            background:#0b4f6c;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+        }
+
+        .card{
+            width:380px;
+            background:white;
+            padding:40px;
+            border-radius:12px;
+            box-shadow:0 10px 30px rgba(0,0,0,.2);
+        }
+
+        h2{
+            text-align:center;
+            color:#0b4f6c;
+        }
+
+        input{
+
+            width:100%;
+            padding:12px;
+            margin-top:15px;
+            border-radius:8px;
+            border:1px solid #ccc;
+            font-size:15px;
+        }
+
+        button{
+
+            width:100%;
+            padding:12px;
+            margin-top:20px;
+            background:#0b4f6c;
+            color:white;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+            font-size:16px;
+        }
+
+        button:hover{
+
+            background:#08374a;
+
+        }
+
+        p{
+
+            text-align:center;
+
+        }
+
+        a{
+
+            color:#0b4f6c;
+            text-decoration:none;
+            font-weight:bold;
+
+        }
+
+        .error{
+
+            color:red;
+            text-align:center;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h2>Student Sign Up</h2>
+
+{% if error %}
+<p class="error">{{error}}</p>
+{% endif %}
+
+<form method="POST">
+
+{% csrf_token %}
+
+<input
+type="text"
+name="matric_number"
+placeholder="Matric Number"
+required>
+
+<input
+type="text"
+name="surname"
+placeholder="Surname"
+required>
+
+<button type="submit">
+
+Create Account
+
+</button>
+
+</form>
+
+<p>
+
+Already have an account?
+
+<a href="{% url 'login' %}">
+
+Login
+
+</a>
+
+</p>
+
+</div>
+
+</body>
+</html>
