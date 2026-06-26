@@ -1,0 +1,1 @@
+web: cd helpdesk && gunicorn helpdesk.wsgi:application
