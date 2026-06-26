@@ -8,7 +8,10 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-yu#ylq3q_^!_l7l(h9(a+tvcv@fi%!+sfneh2=g*a1231me7(8'
+SECRET_KEY = os.environ.get(
+    "SECRET_KEY",
+    "django-insecure-yu#ylq3q_^!_l7l(h9(a+tvcv@fi%!+sfneh2=g*a1231me7(8"
+)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
