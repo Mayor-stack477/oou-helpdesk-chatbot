@@ -529,7 +529,7 @@ def signup_view(request):
 
         login(request, user)
 
-        return redirect("home")
+        return redirect("chat")
 
     return render(request, "chatbot/signup.html")
 
@@ -550,7 +550,7 @@ def login_view(request):
 
             login(request, user)
 
-            return redirect("home")
+            return redirect("chat")
 
         return render(
             request,
